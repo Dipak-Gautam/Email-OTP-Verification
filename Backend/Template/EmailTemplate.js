@@ -55,22 +55,21 @@ export const Verification_Email_Template = `
               font-size: 12px;
               border-top: 1px solid #ddd;
           }
-          p {
+          par {
               margin: 0 0 15px;
           }
       </style>
   </head>
   <body>
       <div class="container">
-          <div class="header">Verify Your Email</div>
+          <div class="header">{title}</div>
           <div class="content">
-              <p>Hello,</p>
-              <p>Thank you for signing up! Please confirm your email address by entering the code below:</p>
+              <div class="par">{firstParagraph}</div>
               <span class="verification-code">{verificationCode}</span>
-              <p>If you did not create an account, no further action is required. If you have any questions, feel free to contact our support team.</p>
+              <div class="par">{afterParagraph}</div>
           </div>
           <div class="footer">
-              <p>&copy; ${new Date().getFullYear()} Your Company. All rights reserved.</p>
+              <p>&copy; ${new Date().getFullYear()} {footer}</p>
           </div>
       </div>
   </body>

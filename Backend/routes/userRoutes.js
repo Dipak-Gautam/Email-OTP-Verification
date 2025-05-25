@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
       name: user.name,
     };
     const token = generateJWtToken(payload);
-    // SendVerificationCode("anjangautam095@gmail.com", "12345");
+
     res.status(200).json({
       message: "Login Sucessfully",
       token: token,

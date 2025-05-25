@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoutes);
-app.use("/email", jwtAuthMiddleWare, emailRoutes);
+app.use("/email", emailRoutes);
 
 app.listen(PORT, () => {
   console.log(`App is running on port ${PORT}`);

@@ -1,4 +1,5 @@
 import express, { response } from "express";
+import User from "../modals/User.js";
 const router = express.Router();
 import {
   SendVerificationCode,
@@ -26,6 +27,18 @@ router.post("/welcome", async (req, res) => {
     sendWelcomeMessage(email, name, res);
   } catch (error) {
     console.log("email send error");
+    res.status(400).json("Internal server error");
+  }
+});
+
+router.post("/otp-verify", async (req, res) => {
+  try {
+    const { email, otpDigit, id } = req.body;
+    const user = await User.findById(id);
+    const otp = getRandomNumber(otpDigit);
+    SendVerificationCode(email, otp, res, user);
+  } catch (error) {
+    console.log("OTP verification error");
     res.status(400).json("Internal server error");
   }
 });

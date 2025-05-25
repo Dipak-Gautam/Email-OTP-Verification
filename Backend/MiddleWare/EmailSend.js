@@ -4,16 +4,25 @@ import {
 } from "../Template/EmailTemplate.js";
 import { transporter } from "./Email.config.js";
 
-export const SendVerificationCode = async (email, verificationCode, res) => {
+export const SendVerificationCode = async (
+  email,
+  verificationCode,
+  res,
+  user
+) => {
   try {
     const response = await transporter.sendMail({
-      from: '"Cosmic 👻" <cosmicdevpokhara@gmail.com>',
+      from: '"OTP-Mailer " <cosmicdevpokhara@gmail.com>',
       to: email,
-      subject: "Email Verification",
+      subject: user.emailConfig.subject,
       html: Verification_Email_Template.replace(
         "{verificationCode}",
         verificationCode
-      ),
+      )
+        .replace("{title}", user.emailConfig.title)
+        .replace("{firstParagraph}", user.emailConfig.firstParagraph)
+        .replace("{afterParagraph}", user.emailConfig.afterParagraph)
+        .replace("{footer}", user.emailConfig.footer),
     });
     res
       .status(200)
