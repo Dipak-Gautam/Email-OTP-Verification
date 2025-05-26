@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import User from "../modals/User.js";
 const router = express.Router();
 import {

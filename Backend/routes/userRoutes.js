@@ -56,7 +56,6 @@ router.post("/login", async (req, res) => {
 router.post("/password", jwtAuthMiddleWare, async (req, res) => {
   try {
     const { oldPassword, newPassword } = req.body;
-    console.log("i am called", req.user);
     const user = await User.findById(req.user.id);
     if (!user || !(await user.comparePassword(oldPassword))) {
       return res.status(400).json({ message: "Password didn't match" });
