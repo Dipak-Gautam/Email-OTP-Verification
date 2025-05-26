@@ -22,8 +22,8 @@ export const Verification_Email_Template = `
               border: 1px solid #ddd;
           }
           .header {
-              background-color: #4CAF50;
-              color: white;
+              background-color: #{titleBackgroundColor};
+              color: #{titleColor};
               padding: 20px;
               text-align: center;
               font-size: 26px;
@@ -31,16 +31,17 @@ export const Verification_Email_Template = `
           }
           .content {
               padding: 25px;
-              color: #333;
+              color: #{bodyColor};
               line-height: 1.8;
+               background: #{bodyBackgroundColor};
           }
           .verification-code {
               display: block;
               margin: 20px 0;
               font-size: 22px;
-              color: #4CAF50;
-              background: #e8f5e9;
-              border: 1px dashed #4CAF50;
+              color: #{optColor};
+              background: #{optBackgroundColor};
+              border: 1px dashed #{otpBorderColor};
               padding: 10px;
               text-align: center;
               border-radius: 5px;
@@ -48,10 +49,10 @@ export const Verification_Email_Template = `
               letter-spacing: 2px;
           }
           .footer {
-              background-color: #f4f4f4;
+              background-color: #{footerBackgroundColor};
               padding: 15px;
               text-align: center;
-              color: #777;
+              color: #{footerColor};
               font-size: 12px;
               border-top: 1px solid #ddd;
           }
