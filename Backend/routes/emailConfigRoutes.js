@@ -1,17 +1,20 @@
 import express from "express";
 import User from "../modals/User.js";
+import { jwtAuthMiddleWare } from "../jwt.js";
 
 const router = express.Router();
 
-router.post("/email-config", jwtAuthMiddleWare, async (req, res) => {
+router.post("/email", jwtAuthMiddleWare, async (req, res) => {
   try {
+    console.log("i am called");
     const { data } = req.body;
+    console.log("data", data);
     const user = await User.findById(req.user.id);
     user.emailConfig = data;
     await user.save();
     res.status(200).json({
       message: "Email configuration updated successfully",
-      response: User,
+      response: user,
     });
   } catch (error) {
     console.log("email configuration error");
