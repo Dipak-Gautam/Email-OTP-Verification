@@ -22,8 +22,8 @@ export const Verification_Email_Template = `
               border: 1px solid #ddd;
           }
           .header {
-              background-color: #{titleBackgroundColor};
-              color: #{titleColor};
+              background-color: {titleBackgroundColor};
+              color: {titleColor};
               padding: 20px;
               text-align: center;
               font-size: 26px;
@@ -31,33 +31,33 @@ export const Verification_Email_Template = `
           }
           .content {
               padding: 25px;
-              color: #{bodyColor};
+              color: {bodyColor};
               line-height: 1.8;
-               background: #{bodyBackgroundColor};
+               background: {bodyBackgroundColor};
           }
           .verification-code {
               display: block;
               margin: 20px 0;
               font-size: 22px;
-              color: #{optColor};
-              background: #{optBackgroundColor};
-              border: 1px dashed #{otpBorderColor};
+              color: {optColor};
+              background: {optBackgroundColor};
+              border: 1px dashed {otpBorderColor};
               padding: 10px;
               text-align: center;
               border-radius: 5px;
               font-weight: bold;
               letter-spacing: 2px;
           }
-          .footer {
-              background-color: #{footerBackgroundColor};
-              padding: 15px;
+          .footer1 {
+              background-color: {footerBackgroundColor};
+              padding: 10px;
               text-align: center;
-              color: #{footerColor};
+              color: {footerColor};
               font-size: 12px;
               border-top: 1px solid #ddd;
           }
-          par {
-              margin: 0 0 15px;
+          .par {
+              margin: 0 0 10px;
           }
       </style>
   </head>
@@ -69,8 +69,8 @@ export const Verification_Email_Template = `
               <span class="verification-code">{verificationCode}</span>
               <div class="par">{afterParagraph}</div>
           </div>
-          <div class="footer">
-              <p>&copy; ${new Date().getFullYear()} {footer}</p>
+          <div class="footer1">
+              <div class="par"> {footer}</div>
           </div>
       </div>
   </body>
