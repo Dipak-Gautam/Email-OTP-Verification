@@ -6,9 +6,7 @@ const router = express.Router();
 
 router.post("/email", jwtAuthMiddleWare, async (req, res) => {
   try {
-    console.log("i am called");
     const { data } = req.body;
-    console.log("data", data);
     const user = await User.findById(req.user.id);
     user.emailConfig = data;
     await user.save();
