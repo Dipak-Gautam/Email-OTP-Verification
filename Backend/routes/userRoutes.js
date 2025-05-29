@@ -15,7 +15,7 @@ router.post("/signup", async (req, res) => {
       name: response.name,
     };
     const token = generateJWtToken(payload);
-    SendVerificationCode(response.email, "12345");
+    // SendVerificationCode(response.email, "12345");
     res.status(200).json({
       response: response,
       token: token,
@@ -31,7 +31,6 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
-    console.log("user", user);
     if (!user || !(await user.comparePassword(password))) {
       return res.status(400).json({ message: "Invalid username or password" });
     }
@@ -41,7 +40,6 @@ router.post("/login", async (req, res) => {
       name: user.name,
     };
     const token = generateJWtToken(payload);
-
     res.status(200).json({
       message: "Login Sucessfully",
       token: token,
