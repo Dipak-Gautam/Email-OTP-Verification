@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import "./db.js";
-import { jwtAuthMiddleWare } from "./jwt.js";
 import userRoutes from "./routes/userRoutes.js";
 import emailRoutes from "./routes/emailRoutes.js";
 import emailConfigRoutes from "./routes/emailConfigRoutes.js";

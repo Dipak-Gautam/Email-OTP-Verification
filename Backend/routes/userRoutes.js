@@ -2,7 +2,6 @@ import express, { response } from "express";
 const router = express.Router();
 import User from "../modals/User.js";
 import { jwtAuthMiddleWare, generateJWtToken } from "../jwt.js";
-import { SendVerificationCode } from "../MiddleWare/EmailSend.js";
 
 router.post("/signup", async (req, res) => {
   try {
@@ -14,8 +13,12 @@ router.post("/signup", async (req, res) => {
       email: response.email,
       name: response.name,
     };
+    const code = { id: response.id, timestamp: Date.now() };
+    const secretCode = generateJWtToken(code);
     const token = generateJWtToken(payload);
-    // SendVerificationCode(response.email, "12345");
+    newUser.secretCode = secretCode;
+    await newUser.save();
+
     res.status(200).json({
       response: response,
       token: token,

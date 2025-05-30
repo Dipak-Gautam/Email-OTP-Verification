@@ -47,39 +47,39 @@ const userSchema = new mongoose.Schema(
       },
       titleColor: {
         type: String,
-        default: "ffffff",
+        default: "#ffffff",
       },
       titleBackgroundColor: {
         type: String,
-        default: "33e371",
+        default: "#33e371",
       },
       optColor: {
         type: String,
-        default: "00a63e",
+        default: "#00a63e",
       },
       optBackgroundColor: {
         type: String,
-        default: "e8f5e9",
+        default: "#e8f5e9",
       },
       otpBorderColor: {
         type: String,
-        default: "00a63e",
+        default: "#00a63e",
       },
       bodyColor: {
         type: String,
-        default: "1d1d1d",
+        default: "#1d1d1d",
       },
       bodyBackgroundColor: {
         type: String,
-        default: "ffffff",
+        default: "#ffffff",
       },
       footerColor: {
         type: String,
-        default: "6f7686",
+        default: "#6f7686",
       },
       footerBackgroundColor: {
         type: String,
-        default: "f4f4f4",
+        default: "#f4f4f4",
       },
     },
   },

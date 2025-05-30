@@ -11,7 +11,6 @@ export const SendVerificationCode = async (
   user
 ) => {
   try {
-    console.log("the user part", user);
     const firstParagraph = user.emailConfig.firstParagraph;
     const formattedFirstParagraph = firstParagraph.replace(/\n/g, "<br>");
     const response = await transporter.sendMail({

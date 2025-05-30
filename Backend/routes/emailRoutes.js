@@ -6,6 +6,7 @@ import {
   sendWelcomeMessage,
 } from "../MiddleWare/EmailSend.js";
 import getRandomNumber from "../Functions/randomFunction.js";
+import jwt from "jsonwebtoken";
 
 router.post("/otp", async (req, res) => {
   try {
@@ -33,8 +34,9 @@ router.post("/welcome", async (req, res) => {
 
 router.post("/otp-verify", async (req, res) => {
   try {
-    const { email, otpDigit, id } = req.body;
-    const user = await User.findById(id);
+    const { email, otpDigit, secretCode } = req.body;
+    const decoded = jwt.verify(secretCode, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
     const otp = getRandomNumber(otpDigit);
     SendVerificationCode(email, otp, res, user);
   } catch (error) {
