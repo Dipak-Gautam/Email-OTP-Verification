@@ -10,12 +10,15 @@ import jwt from "jsonwebtoken";
 
 router.post("/otp", async (req, res) => {
   try {
-    const { email, otpDigit } = req.body;
+    const { email, otpDigit, secretCode } = req.body;
+    const decoded = jwt.verify(secretCode, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
     if (Number(otpDigit) <= 3 || Number(otpDigit >= 11)) {
-      res.status(500).json("The number of otp digit must be between 3 1nd 10");
+      res.status(500).json("The number of otp digit must be between 3 and 10");
+      return;
     }
     const otp = getRandomNumber(otpDigit);
-    SendVerificationCode(email, otp, res);
+    SendVerificationCode(email, otp, res, user);
   } catch (error) {
     console.log("email send error");
     res.status(400).json("Internal server error");
