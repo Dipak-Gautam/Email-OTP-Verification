@@ -1,4 +1,5 @@
 import {
+  Default_Email_Template,
   Verification_Email_Template,
   Welcome_Email_Template,
 } from "../Template/EmailTemplate.js";
@@ -62,5 +63,25 @@ export const sendWelcomeMessage = async (email, name, res) => {
   } catch (error) {
     console.log("email error", error);
     res.status(200).json("Welcome message cannot be sent");
+  }
+};
+
+export const DefaultVerificationCode = async (email, verificationCode, res) => {
+  try {
+    const response = await transporter.sendMail({
+      from: '"OTP-Mailer " <cosmicdevpokhara@gmail.com>',
+      to: email,
+      subject: "Verify your email",
+      html: Default_Email_Template.replace(
+        "{verificationCode}",
+        verificationCode
+      ),
+    });
+    res
+      .status(200)
+      .json({ message: "Otp sent sucessfully", otp: verificationCode });
+  } catch (error) {
+    console.log("email error", email);
+    res.status(200).json("Email cannot be sent");
   }
 };

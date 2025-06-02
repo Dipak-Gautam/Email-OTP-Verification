@@ -2,6 +2,7 @@ import express from "express";
 import User from "../modals/User.js";
 const router = express.Router();
 import {
+  DefaultVerificationCode,
   SendVerificationCode,
   sendWelcomeMessage,
 } from "../MiddleWare/EmailSend.js";
@@ -37,11 +38,9 @@ router.post("/welcome", async (req, res) => {
 
 router.post("/otp-verify", async (req, res) => {
   try {
-    const { email, otpDigit, secretCode } = req.body;
-    const decoded = jwt.verify(secretCode, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.id);
+    const { email, otpDigit } = req.body;
     const otp = getRandomNumber(otpDigit);
-    SendVerificationCode(email, otp, res, user);
+    DefaultVerificationCode(email, otp, res);
   } catch (error) {
     console.log("OTP verification error");
     res.status(400).json("Internal server error");
