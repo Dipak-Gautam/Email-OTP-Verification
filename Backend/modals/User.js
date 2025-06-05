@@ -82,6 +82,14 @@ const userSchema = new mongoose.Schema(
         default: "#f4f4f4",
       },
     },
+    // logOtp: {
+    //   try: {
+    //     type: Number,
+    //   },
+    //   otp: {
+    //     type: String,
+    //   },
+    // },
   },
   { timestamps: true }
 );

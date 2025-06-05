@@ -2,6 +2,8 @@ import express, { response } from "express";
 const router = express.Router();
 import User from "../modals/User.js";
 import { jwtAuthMiddleWare, generateJWtToken } from "../jwt.js";
+import getRandomNumber from "../Functions/randomFunction.js";
+import { DefaultVerificationCode } from "../MiddleWare/EmailSend.js";
 
 router.post("/signup", async (req, res) => {
   try {
@@ -24,6 +26,26 @@ router.post("/signup", async (req, res) => {
       token: token,
       message: "Signup sucessfully",
     });
+  } catch (error) {
+    console.log("signup", error);
+    res.status(500).json({ message: "Internal server error", error: error });
+  }
+});
+
+router.post("/forgetPassword", async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const otp = getRandomNumber(6);
+    // user.logOtp = {
+    //   otp: otp,
+    //   try: 0,
+    // };
+    // await user.save();
+    DefaultVerificationCode(email, otp, res);
   } catch (error) {
     console.log("signup", error);
     res.status(500).json({ message: "Internal server error", error: error });
