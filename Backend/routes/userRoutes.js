@@ -32,20 +32,16 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.post("/forgetPassword", async (req, res) => {
+router.post("/forget-password", async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, newPassword } = req.body;
     const user = await User.findOne({ email: email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    const otp = getRandomNumber(6);
-    // user.logOtp = {
-    //   otp: otp,
-    //   try: 0,
-    // };
-    // await user.save();
-    DefaultVerificationCode(email, otp, res);
+    user.password = newPassword;
+    await user.save();
+    res.status(200).json({ message: "password changed sucessfully" });
   } catch (error) {
     console.log("signup", error);
     res.status(500).json({ message: "Internal server error", error: error });
