@@ -21,7 +21,7 @@ router.post("/otp", async (req, res) => {
     const otp = getRandomNumber(otpDigit);
     SendVerificationCode(email, otp, res, user);
   } catch (error) {
-    console.log("email send error");
+    console.log("email send error", error);
     res.status(400).json("Internal server error");
   }
 });
