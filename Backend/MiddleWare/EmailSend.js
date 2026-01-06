@@ -46,7 +46,7 @@ export const SendVerificationCode = async (
       .status(200)
       .json({ message: "Otp sent sucessfully", otp: verificationCode });
   } catch (error) {
-    console.log("email error", email);
+    console.log("email error", email, error);
     res.status(200).json("Email cannot be sent");
   }
 };
