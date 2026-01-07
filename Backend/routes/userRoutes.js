@@ -1,9 +1,7 @@
-import express, { response } from "express";
+import express from "express";
 const router = express.Router();
 import User from "../modals/User.js";
 import { jwtAuthMiddleWare, generateJWtToken } from "../jwt.js";
-import getRandomNumber from "../Functions/randomFunction.js";
-import { DefaultVerificationCode } from "../MiddleWare/EmailSend.js";
 
 router.post("/signup", async (req, res) => {
   try {
@@ -32,18 +30,19 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.post("/forget-password", async (req, res) => {
+router.post("/change", async (req, res) => {
   try {
     const { email, newPassword } = req.body;
+    console.log("email", email, newPassword);
     const user = await User.findOne({ email: email });
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "User Not found" });
     }
     user.password = newPassword;
     await user.save();
     res.status(200).json({ message: "password changed sucessfully" });
   } catch (error) {
-    console.log("signup", error);
+    console.log("change", error);
     res.status(500).json({ message: "Internal server error", error: error });
   }
 });
