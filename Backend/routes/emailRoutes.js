@@ -29,8 +29,8 @@ router.post("/otp", async (req, res) => {
 
 router.post("/welcome", async (req, res) => {
   try {
-    const { name, email } = req.body;
-    sendWelcomeMessage(email, name, res);
+    const { name, email, link } = req.body;
+    sendWelcomeMessage(email, name, res, link);
   } catch (error) {
     console.log("email send error");
     res.status(400).json("Internal server error");
