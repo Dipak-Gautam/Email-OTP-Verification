@@ -4,6 +4,7 @@ import "./db.js";
 import userRoutes from "./routes/userRoutes.js";
 import emailRoutes from "./routes/emailRoutes.js";
 import emailConfigRoutes from "./routes/emailConfigRoutes.js";
+import customEmailRoutes from "./routes/customEmailRoutes.js";
 import cors from "cors";
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 app.use("/user", userRoutes);
 app.use("/email", emailRoutes);
 app.use("/config", emailConfigRoutes);
+app.use("/custom", customEmailRoutes);
 
 app.listen(PORT, () => {
   console.log(`App is running on port ${PORT}`);
