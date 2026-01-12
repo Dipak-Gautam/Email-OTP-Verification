@@ -3,7 +3,7 @@ import {
   Verification_Email_Template,
   Welcome_Email_Template,
 } from "../Template/EmailTemplate.js";
-import { Cart_Discount_Email_Template } from "../Template/CustomEmailTemplate.js";
+
 import { transporter } from "./Email.config.js";
 
 export const SendVerificationCode = async (
@@ -87,20 +87,5 @@ export const DefaultVerificationCode = async (email, verificationCode, res) => {
   } catch (error) {
     console.log("email error", email);
     res.status(200).json("Email cannot be sent");
-  }
-};
-
-export const sendCartProduct = async (email, res) => {
-  try {
-    const response = await transporter.sendMail({
-      from: '"Pasal" <cosmicdevpokhara@gmail.com>',
-      to: email,
-      subject: "Welcome Message",
-      html: Cart_Discount_Email_Template,
-    });
-    res.status(200).json("Cart Product sent sucessfully");
-  } catch (error) {
-    console.log("email error", error);
-    res.status(200).json("CArt Product cannot be send cannot be sent");
   }
 };

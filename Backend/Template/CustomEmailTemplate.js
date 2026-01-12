@@ -57,7 +57,7 @@ export const Cart_Discount_Email_Template = `
               padding: 12px 25px;
               margin: 20px 0;
               background-color: #28a745;
-              color: white;
+              color: #ffffff;
               text-decoration: none;
               border-radius: 5px;
               font-size: 16px;
@@ -88,17 +88,28 @@ export const Cart_Discount_Email_Template = `
               <p>You left something amazing in your cart — and now it’s available at a special discount just for you.</p>
 
               <img 
-                  src="https://tse4.mm.bing.net/th/id/OIP.G_rJpK3mxsLmcGNls2CosgHaGk?rs=1&pid=ImgDetMain&o=7&rm=3" 
+                  src="{imageLink}" 
                   alt="Apple AirPods Max"
                   class="product-image"
               />
 
-              <div class="product-title">Apple AirPods Max</div>
+              <div class="product-title">{productTitle}</div>
               <div class="discount-text">🎧 Enjoy 20% OFF for a limited time!</div>
 
               <p>Experience premium sound quality, active noise cancellation, and all-day comfort.</p>
 
-              <a href="http://localhost:3000/" class="button">
+              <a href="{targetLink}" 
+              style="
+                    display: inline-block;
+                    padding: 12px 25px;
+                    margin: 20px 0;
+                    background-color: #28a745;
+                    color: #ffffff !important;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    font-weight: bold;
+                     ">
                   Complete Your Purchase
               </a>
 
