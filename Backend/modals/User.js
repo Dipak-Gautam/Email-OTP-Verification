@@ -82,6 +82,163 @@ const userSchema = new mongoose.Schema(
         default: "#f4f4f4",
       },
     },
+    welcomeEmail: {
+      subject: {
+        type: String,
+        default: "Welcome Email",
+      },
+      variables: {
+        type: [String],
+        default: () => ["name"],
+      },
+      welcomeEmailColor: {
+        body: {
+          type: String,
+          default: "#313234",
+        },
+        bodyBackground: {
+          type: String,
+          default: "#ffffff",
+        },
+        button: {
+          type: String,
+          default: "#ffffff",
+        },
+        buttonBackground: {
+          type: String,
+          default: "#155dfc",
+        },
+        footer: {
+          type: String,
+          default: "#6f7686",
+        },
+        footerBackground: {
+          type: String,
+          default: "#f4f4f4",
+        },
+        title: {
+          type: String,
+          default: "#ffffff",
+        },
+        titleBackground: {
+          type: String,
+          default: "#155dfc",
+        },
+      },
+      welcomeEmailMessage: {
+        heading: {
+          type: String,
+          default: "Welcome to our community",
+        },
+        firstParagraph: {
+          type: String,
+          default:
+            "Hello {name},\nWe’re thrilled to have you join us! Your registration was successful, and we’re committed to providing you with the best experience possible.\nHere’s how you can get started:",
+        },
+        buttonTitle: {
+          type: String,
+          default: "Get Started",
+        },
+        lastParagraph: {
+          type: String,
+          default:
+            "If you need any help, don’t hesitate to contact us. We’re here to support you every step of the way.",
+        },
+        copyRight: {
+          type: String,
+          default: "OtpMailer. All rights reserved.",
+        },
+      },
+    },
+    productEmail: {
+      subject: {
+        type: String,
+        default: "Welcome Email",
+      },
+      variables: {
+        type: [String],
+        default: () => ["name"],
+      },
+      productEmailColor: {
+        body: {
+          type: String,
+          default: "#313234",
+        },
+        bodyBackground: {
+          type: String,
+          default: "#ffffff",
+        },
+        button: {
+          type: String,
+          default: "#ffffff",
+        },
+        buttonBackground: {
+          type: String,
+          default: "#00a63e",
+        },
+        footer: {
+          type: String,
+          default: "#6f7686",
+        },
+        footerBackground: {
+          type: String,
+          default: "#f4f4f4",
+        },
+        productName: {
+          type: String,
+          default: "#1e2939",
+        },
+        slogan: {
+          type: String,
+          default: "#ff000d",
+        },
+        title: {
+          type: String,
+          default: "#ffffff",
+        },
+        titleBackground: {
+          type: String,
+          default: "#00a63e",
+        },
+      },
+      productEmailMessage: {
+        title: {
+          type: String,
+          default: "Your Cart Item Is Now 20% OFF! 🎉",
+        },
+        productName: {
+          type: String,
+          default: "Apple AirPods Max",
+        },
+        slogan: {
+          type: String,
+          default: "🎧 Enjoy 20% OFF for a limited time!",
+        },
+        firstParagraph: {
+          type: String,
+          default:
+            "Hello {name},\nYou left something amazing in your cart and now it’s available at a special discount just for you.",
+        },
+        secondParagraph: {
+          type: String,
+          default:
+            "Experience premium sound quality, active noise cancellation, and all-day comfort.",
+        },
+        thirdParagraph: {
+          type: String,
+          default:
+            "Hurry! This discount won’t last long. Grab yours before it’s gone.",
+        },
+        button: {
+          type: String,
+          default: "Complete Your Purchase",
+        },
+        footer: {
+          type: String,
+          default: "Dipak Gautam. All rights reserved.",
+        },
+      },
+    },
     // logOtp: {
     //   try: {
     //     type: Number,
@@ -91,7 +248,7 @@ const userSchema = new mongoose.Schema(
     //   },
     // },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 userSchema.pre("save", async function (next) {
