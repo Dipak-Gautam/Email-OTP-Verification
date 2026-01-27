@@ -19,7 +19,6 @@ router.post("/otp", async (req, res) => {
       return;
     }
     const otp = getRandomNumber(otpDigit);
-    console.log("i am called");
     SendVerificationCode(email, otp, res, user);
   } catch (error) {
     console.log("email send error", error);
