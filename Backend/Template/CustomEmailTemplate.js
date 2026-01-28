@@ -2,7 +2,7 @@ export const Cart_Discount_Email_Template = `
   <!DOCTYPE html>
   <html lang="en">
   <head>
-      <meta charset="UTF-8">
+      <meta charset="UTF-8"> 
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Don't Miss Your 20% Discount!</title>
       <style>
@@ -11,20 +11,21 @@ export const Cart_Discount_Email_Template = `
               margin: 0;
               padding: 0;
               background-color: #f4f4f4;
-              color: #333;
+              color: #333; 
           }
           .container {
+              color:{body};
               max-width: 600px;
               margin: 30px auto;
-              background: #ffffff;
+              background: {bodyBackground};
               border-radius: 8px;
               box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
               overflow: hidden;
               border: 1px solid #ddd;
           }
           .header {
-              background-color: #28a745;
-              color: white;
+              background-color: {titleBackgroundColor};
+              color: {titleColor};
               padding: 20px;
               text-align: center;
               font-size: 26px;
@@ -45,9 +46,10 @@ export const Cart_Discount_Email_Template = `
               font-size: 20px;
               font-weight: bold;
               margin: 15px 0 5px;
+              color:{productNameColor}
           }
           .discount-text {
-              color: #e63946;
+              color: {sloganColor};
               font-size: 18px;
               font-weight: bold;
               margin: 10px 0;
@@ -68,16 +70,16 @@ export const Cart_Discount_Email_Template = `
               background-color: #1e7e34;
           }
           .footer {
-              background-color: #f4f4f4;
+              background-color: {footerBackgroundColor};
               padding: 15px;
               text-align: center;
-              color: #777;
+              color: {footerColor};
               font-size: 12px;
               border-top: 1px solid #ddd;
           }
           p {
               margin: 0 0 15px;
-          }
+          } 
       </style>
   </head>
   <body>
@@ -103,8 +105,8 @@ export const Cart_Discount_Email_Template = `
                     display: inline-block;
                     padding: 12px 25px;
                     margin: 20px 0;
-                    background-color: #28a745;
-                    color: #ffffff !important;
+                    background-color: {buttonColor};
+                    color: {buttonBackgroundColor} !important;
                     text-decoration: none;
                     border-radius: 5px;
                     font-size: 16px;

@@ -7,7 +7,7 @@ export const sendCartProduct = async (
   productTitle,
   imageLink,
   targetLink,
-  name
+  user,
 ) => {
   try {
     const response = await transporter.sendMail({
@@ -17,7 +17,32 @@ export const sendCartProduct = async (
       html: Cart_Discount_Email_Template.replace("{productTitle}", productTitle)
         .replace("{imageLink}", imageLink)
         .replace("{targetLink}", targetLink)
-        .replace("{name}", name),
+        .replace("{name}", user.name)
+        .replace("{body}", user.productEmail.productEmailColor.body)
+        .replace(
+          "{bodyBackground}",
+          user.productEmail.productEmailColor.bodyBackground,
+        )
+        .replace("{titleColor}", user.productEmail.productEmailColor.title)
+        .replace(
+          "{titleBackgroundColor}",
+          user.productEmail.productEmailColor.titleBackground,
+        )
+        .replace("{buttonColor}", user.productEmail.productEmailColor.button)
+        .replace(
+          "{buttonBackgroundColor}",
+          user.productEmail.productEmailColor.buttonBackground,
+        )
+        .replace("{footerColor}", user.productEmail.productEmailColor.footer)
+        .replace(
+          "{footerBackgroundColor}",
+          user.productEmail.productEmailColor.footerBackground,
+        )
+        .replace(
+          "{productNameColor}",
+          user.productEmail.productEmailColor.productName,
+        )
+        .replace("{sloganColor}", user.productEmail.productEmailColor.slogan),
     });
     res.status(200).json("Cart Product sent sucessfully");
   } catch (error) {

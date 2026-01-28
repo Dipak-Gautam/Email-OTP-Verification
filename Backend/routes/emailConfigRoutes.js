@@ -36,4 +36,20 @@ router.post("/welcome", jwtAuthMiddleWare, async (req, res) => {
   }
 });
 
+router.post("/product", jwtAuthMiddleWare, async (req, res) => {
+  try {
+    const { data } = req.body;
+    const user = await User.findById(req.user.id);
+    user.productEmail = data;
+    await user.save();
+    res.status(200).json({
+      message: "product email configuration updated sucessfully",
+      response: user,
+    });
+  } catch (error) {
+    console.log("product email configuration email", error);
+    res.status(400).json("Internal server error");
+  }
+});
+
 export default router;
