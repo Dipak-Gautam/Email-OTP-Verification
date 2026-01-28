@@ -105,8 +105,8 @@ export const Cart_Discount_Email_Template = `
                     display: inline-block;
                     padding: 12px 25px;
                     margin: 20px 0;
-                    background-color: {buttonColor};
-                    color: {buttonBackgroundColor} !important;
+                    background-color: {buttonBackgroundColor};
+                    color: {buttonColor} !important;
                     text-decoration: none;
                     border-radius: 5px;
                     font-size: 16px;
