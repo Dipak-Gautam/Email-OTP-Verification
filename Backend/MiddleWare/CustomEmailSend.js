@@ -45,27 +45,52 @@ export const sendCartProduct = async (
         .replace("{sloganColor}", user.productEmail.productEmailColor.slogan)
         .replace(
           "{firstParagraphMessage}",
-          formatText(user.productEmail.productEmailMessage.firstParagraph),
+          formatText(
+            user.productEmail.productEmailMessage.firstParagraph,
+            user.productEmail.variables,
+          ),
         )
         .replace(
           "{sloganMessage}",
-          user.productEmail.productEmailMessage.slogan,
+          formatText(
+            user.productEmail.productEmailMessage.slogan,
+            user.productEmail.variables,
+          ),
         )
         .replace(
           "{secondParagraphMessage}",
-          formatText(user.productEmail.productEmailMessage.secondParagraph),
+          formatText(
+            user.productEmail.productEmailMessage.secondParagraph,
+            user.productEmail.variables,
+          ),
         )
         .replace(
           "{thirdParagraphMessage}",
-          formatText(user.productEmail.productEmailMessage.thirdParagraph),
+          formatText(
+            user.productEmail.productEmailMessage.thirdParagraph,
+            user.productEmail.variables,
+          ),
         )
         .replace(
           "{footerMessage}",
-          user.productEmail.productEmailMessage.footer,
+          formatText(
+            user.productEmail.productEmailMessage.footer,
+            user.productEmail.variables,
+          ),
         )
         .replace(
           "{buttonMessage}",
-          user.productEmail.productEmailMessage.button,
+          formatText(
+            user.productEmail.productEmailMessage.button,
+            user.productEmail.variables,
+          ),
+        )
+        .replace(
+          "{titleMessage}",
+          formatText(
+            user.productEmail.productEmailMessage.title,
+            user.productEmail.variables,
+          ),
         ),
     });
     res.status(200).json("Cart Product sent sucessfully");

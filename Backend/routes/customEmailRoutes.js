@@ -6,13 +6,9 @@ const router = express.Router();
 
 router.post("/cart-product", async (req, res) => {
   try {
-    console.log("i am called");
     const { email, secretCode, productName, imageLink, targetLink } = req.body;
-
     const decoded = jwt.verify(secretCode, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id);
-    console.log("user", user);
-
     sendCartProduct(email, res, productName, imageLink, targetLink, user);
   } catch (error) {
     console.log("error from cart-product");

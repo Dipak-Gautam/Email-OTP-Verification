@@ -84,7 +84,7 @@ export const Cart_Discount_Email_Template = `
   </head>
   <body>
       <div class="container">
-          <div class="header">Your Cart Item Is Now 20% OFF! 🎉</div>
+          <div class="header">{titleMessage}</div>
           <div class="content">
               <p>{firstParagraphMessage}</p>
 
