@@ -86,8 +86,7 @@ export const Cart_Discount_Email_Template = `
       <div class="container">
           <div class="header">Your Cart Item Is Now 20% OFF! 🎉</div>
           <div class="content">
-              <p>Hello {name},</p>
-              <p>You left something amazing in your cart — and now it’s available at a special discount just for you.</p>
+              <p>{firstParagraphMessage}</p>
 
               <img 
                   src="{imageLink}" 
@@ -96,9 +95,9 @@ export const Cart_Discount_Email_Template = `
               />
 
               <div class="product-title">{productTitle}</div>
-              <div class="discount-text">🎧 Enjoy 20% OFF for a limited time!</div>
+              <div class="discount-text">{sloganMessage}</div>
 
-              <p>Experience premium sound quality, active noise cancellation, and all-day comfort.</p>
+              <p>{secondParagraphMessage}</p>
 
               <a href="{targetLink}" 
               style="
@@ -112,13 +111,13 @@ export const Cart_Discount_Email_Template = `
                     font-size: 16px;
                     font-weight: bold;
                      ">
-                  Complete Your Purchase
+                  {buttonMessage}
               </a>
 
-              <p>Hurry! This discount won’t last long. Grab yours before it’s gone.</p>
+              <p>{thirdParagraphMessage}</p>
           </div>
           <div class="footer">
-              <p>&copy; ${new Date().getFullYear()} Your Company. All rights reserved.</p>
+              <p>&copy; ${new Date().getFullYear()} {footerMessage}</p>
           </div>
       </div>
   </body>
