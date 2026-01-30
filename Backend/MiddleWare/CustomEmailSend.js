@@ -9,7 +9,9 @@ export const sendCartProduct = async (
   imageLink,
   targetLink,
   user,
+  apiVariables,
 ) => {
+  console.log("recived variables", apiVariables);
   try {
     const response = await transporter.sendMail({
       from: '"Pasal" <cosmicdevpokhara@gmail.com>',
@@ -48,6 +50,7 @@ export const sendCartProduct = async (
           formatText(
             user.productEmail.productEmailMessage.firstParagraph,
             user.productEmail.variables,
+            apiVariables,
           ),
         )
         .replace(
@@ -55,6 +58,7 @@ export const sendCartProduct = async (
           formatText(
             user.productEmail.productEmailMessage.slogan,
             user.productEmail.variables,
+            apiVariables,
           ),
         )
         .replace(
@@ -62,6 +66,7 @@ export const sendCartProduct = async (
           formatText(
             user.productEmail.productEmailMessage.secondParagraph,
             user.productEmail.variables,
+            apiVariables,
           ),
         )
         .replace(
@@ -69,6 +74,7 @@ export const sendCartProduct = async (
           formatText(
             user.productEmail.productEmailMessage.thirdParagraph,
             user.productEmail.variables,
+            apiVariables,
           ),
         )
         .replace(
@@ -76,6 +82,7 @@ export const sendCartProduct = async (
           formatText(
             user.productEmail.productEmailMessage.footer,
             user.productEmail.variables,
+            apiVariables,
           ),
         )
         .replace(
@@ -83,6 +90,7 @@ export const sendCartProduct = async (
           formatText(
             user.productEmail.productEmailMessage.button,
             user.productEmail.variables,
+            apiVariables,
           ),
         )
         .replace(
@@ -90,6 +98,7 @@ export const sendCartProduct = async (
           formatText(
             user.productEmail.productEmailMessage.title,
             user.productEmail.variables,
+            apiVariables,
           ),
         ),
     });

@@ -32,32 +32,32 @@ export const Cart_Discount_Email_Template = `
               font-weight: bold;
           }
           .content {
-              padding: 25px;
-              line-height: 1.8;
+              padding: 20px;
+              line-height: 1.5;
               text-align: center;
           }
           .product-image {
               width: 100%;
-              max-width: 300px;
-              margin: 20px auto;
+              max-width: 250px;
+              margin: 15px auto;
               border-radius: 8px;
           }
           .product-title {
               font-size: 20px;
               font-weight: bold;
-              margin: 15px 0 5px;
+              margin: 10px 0 5px;
               color:{productNameColor}
           }
           .discount-text {
               color: {sloganColor};
               font-size: 18px;
               font-weight: bold;
-              margin: 10px 0;
+              margin: 8px 0;
           }
           .button {
               display: inline-block;
               padding: 12px 25px;
-              margin: 20px 0;
+              margin: 15px 0;
               background-color: #28a745;
               color: #ffffff;
               text-decoration: none;
@@ -78,7 +78,7 @@ export const Cart_Discount_Email_Template = `
               border-top: 1px solid #ddd;
           }
           p {
-              margin: 0 0 15px;
+              margin: 0 0 0px;
           } 
       </style>
   </head>
