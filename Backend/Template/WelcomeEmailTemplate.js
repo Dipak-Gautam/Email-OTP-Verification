@@ -12,19 +12,20 @@ export const Welcome_Email_Template = `
               padding: 0;
               background-color: #f4f4f4;
               color: #333;
-          }
+          } 
           .container {
               max-width: 600px;
               margin: 30px auto;
-              background: #ffffff;
+              background: {bodyBackgroundColor};
+              color:{bodyColor};
               border-radius: 8px;
               box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
               overflow: hidden;
               border: 1px solid #ddd;
           }
           .header {
-              background-color: #007BFF;
-              color: white;
+              background-color: {titleBackgroundColor};
+              color: {titleColor};
               padding: 20px;
               text-align: center;
               font-size: 26px;
@@ -55,10 +56,10 @@ export const Welcome_Email_Template = `
               background-color: #0056b3;
           }
           .footer {
-              background-color: #f4f4f4;
+              background-color: {footerBackgroundColor};
               padding: 15px;
               text-align: center;
-              color: #777;
+              color: {footerColor};
               font-size: 12px;
               border-top: 1px solid #ddd;
           }
@@ -79,7 +80,18 @@ export const Welcome_Email_Template = `
                   <li>Stay informed by checking out our blog for the latest updates and tips.</li>
                   <li>Reach out to our support team if you have any questions or need assistance.</li>
               </ul>
-              <a href="{btnLink}" class="button">Get Started</a>
+              <a href="{btnLink}" 
+               style="
+                    display: inline-block;
+                    padding: 12px 25px;
+                    margin: 20px 0;
+                    background-color: {buttonBackgroundColor};
+                    color: {buttonColor} !important;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    font-weight: bold;
+                     ">Get Started</a>
               <p>If you need any help, don’t hesitate to contact us. We’re here to support you every step of the way.</p>
           </div>
           <div class="footer">

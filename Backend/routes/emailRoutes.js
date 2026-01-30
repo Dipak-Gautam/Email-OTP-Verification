@@ -4,8 +4,8 @@ const router = express.Router();
 import {
   DefaultVerificationCode,
   SendVerificationCode,
-  sendWelcomeMessage,
 } from "../MiddleWare/EmailSend.js";
+import { sendWelcomeMessage } from "../MiddleWare/welcomeEmailSend.js";
 import getRandomNumber from "../Functions/randomFunction.js";
 import jwt from "jsonwebtoken";
 
@@ -26,16 +26,6 @@ router.post("/otp", async (req, res) => {
   }
 });
 
-router.post("/welcome", async (req, res) => {
-  try {
-    const { name, email, link } = req.body;
-    sendWelcomeMessage(email, name, res, link);
-  } catch (error) {
-    console.log("email send error");
-    res.status(400).json("Internal server error");
-  }
-});
-
 router.post("/otp-verify", async (req, res) => {
   try {
     const { email, otpDigit } = req.body;
@@ -43,6 +33,19 @@ router.post("/otp-verify", async (req, res) => {
     DefaultVerificationCode(email, otp, res);
   } catch (error) {
     console.log("OTP verification error");
+    res.status(400).json("Internal server error");
+  }
+});
+
+router.post("/welcome", async (req, res) => {
+  try {
+    const { secretCode, email, buttonLink } = req.body;
+    const decoded = jwt.verify(secretCode, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
+    console.log("user data from welcome email", user);
+    sendWelcomeMessage(email, res, user, buttonLink);
+  } catch (error) {
+    console.log("email send error");
     res.status(400).json("Internal server error");
   }
 });
