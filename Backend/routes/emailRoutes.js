@@ -39,11 +39,17 @@ router.post("/otp-verify", async (req, res) => {
 
 router.post("/welcome", async (req, res) => {
   try {
-    const { secretCode, email, buttonLink } = req.body;
+    const { secretCode, email, buttonLink, variables } = req.body;
     const decoded = jwt.verify(secretCode, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id);
-    console.log("user data from welcome email", user);
-    sendWelcomeMessage(email, res, user, buttonLink);
+
+    sendWelcomeMessage(
+      email,
+      res,
+      user,
+      buttonLink,
+      variables ? variables : {},
+    );
   } catch (error) {
     console.log("email send error");
     res.status(400).json("Internal server error");

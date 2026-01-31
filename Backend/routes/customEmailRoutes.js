@@ -17,7 +17,7 @@ router.post("/cart-product", async (req, res) => {
       imageLink,
       targetLink,
       user,
-      variables,
+      variables ? variables : {},
     );
   } catch (error) {
     console.log("error from cart-product");

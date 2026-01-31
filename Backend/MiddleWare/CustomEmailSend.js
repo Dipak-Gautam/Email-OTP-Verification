@@ -11,7 +11,6 @@ export const sendCartProduct = async (
   user,
   apiVariables,
 ) => {
-  console.log("recived variables", apiVariables);
   try {
     const response = await transporter.sendMail({
       from: '"Pasal" <cosmicdevpokhara@gmail.com>',

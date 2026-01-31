@@ -14,7 +14,7 @@ export const Welcome_Email_Template = `
               color: #333;
           } 
           .container {
-              max-width: 600px;
+              max-width: 700px;
               margin: 30px auto;
               background: {bodyBackgroundColor};
               color:{bodyColor};
@@ -26,76 +26,52 @@ export const Welcome_Email_Template = `
           .header {
               background-color: {titleBackgroundColor};
               color: {titleColor};
-              padding: 20px;
+              padding: 18px;
               text-align: center;
-              font-size: 26px;
+              font-size: 20px;
               font-weight: bold;
           }
           .content {
               padding: 25px;
-              line-height: 1.8;
+              line-height: 1.5;
           }
-          .welcome-message {
-              font-size: 18px;
-              margin: 20px 0;
-          }
-          .button {
-              display: inline-block;
-              padding: 12px 25px;
-              margin: 20px 0;
-              background-color: #007BFF;
-              color: white;
-              text-decoration: none;
-              border-radius: 5px;
-              text-align: center;
-              font-size: 16px;
-              font-weight: bold;
-              transition: background-color 0.3s;
-          }
-          .button:hover {
-              background-color: #0056b3;
-          }
+          
           .footer {
               background-color: {footerBackgroundColor};
-              padding: 15px;
+              padding: 10px;
               text-align: center;
               color: {footerColor};
               font-size: 12px;
               border-top: 1px solid #ddd;
           }
           p {
-              margin: 0 0 15px;
+              margin: 0 0 0px;
+              font-size: 13px;
           }
       </style>
   </head>
   <body>
       <div class="container">
-          <div class="header">Welcome to Our Community!</div>
+          <div class="header">{headingMessage}</div>
           <div class="content">
-              <p class="welcome-message">Hello {name},</p>
-              <p>We’re thrilled to have you join us! Your registration was successful, and we’re committed to providing you with the best experience possible.</p>
-              <p>Here’s how you can get started:</p>
-              <ul>
-                  <li>Explore our features and customize your experience.</li>
-                  <li>Stay informed by checking out our blog for the latest updates and tips.</li>
-                  <li>Reach out to our support team if you have any questions or need assistance.</li>
-              </ul>
+              <p>{firstParagraphMessage}</p>
+              
               <a href="{btnLink}" 
                style="
                     display: inline-block;
-                    padding: 12px 25px;
-                    margin: 20px 0;
+                    padding: 8px 25px;
+                    margin: 16px 0;
                     background-color: {buttonBackgroundColor};
                     color: {buttonColor} !important;
                     text-decoration: none;
                     border-radius: 5px;
-                    font-size: 16px;
+                    font-size: 14px;
                     font-weight: bold;
-                     ">Get Started</a>
-              <p>If you need any help, don’t hesitate to contact us. We’re here to support you every step of the way.</p>
+                     ">{buttonTitleMessage}</a>
+              <p>{lastParagraphMessage}</p>
           </div>
           <div class="footer">
-              <p>&copy; ${new Date().getFullYear()} Your Company. All rights reserved.</p>
+              <p>&copy; ${new Date().getFullYear()} {footerMessage}</p>
           </div>
       </div>
   </body>
