@@ -14,7 +14,7 @@ export const Welcome_Email_Template = `
               color: #333;
           } 
           .container {
-              max-width: 700px;
+              max-width: 650px;
               margin: 30px auto;
               background: {bodyBackgroundColor};
               color:{bodyColor};
