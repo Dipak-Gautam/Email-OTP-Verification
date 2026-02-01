@@ -153,7 +153,7 @@ const userSchema = new mongoose.Schema(
     productEmail: {
       subject: {
         type: String,
-        default: "Welcome Email",
+        default: "Special Offer",
       },
       variables: {
         type: [String],
