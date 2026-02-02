@@ -3,6 +3,7 @@ import User from "../modals/User.js";
 const router = express.Router();
 import {
   DefaultVerificationCode,
+  SendContactMail,
   SendVerificationCode,
 } from "../MiddleWare/EmailSend.js";
 import { sendWelcomeMessage } from "../MiddleWare/welcomeEmailSend.js";
@@ -52,6 +53,17 @@ router.post("/welcome", async (req, res) => {
     );
   } catch (error) {
     console.log("email send error");
+    res.status(400).json("Internal server error");
+  }
+});
+
+router.post("/contactMail", async (req, res) => {
+  try {
+    const { email, name, message } = req.body;
+    SendContactMail(email);
+    res.status(200).json("contact mail sent sucessfully");
+  } catch (error) {
+    console.log("contact mail error \n", error);
     res.status(400).json("Internal server error");
   }
 });

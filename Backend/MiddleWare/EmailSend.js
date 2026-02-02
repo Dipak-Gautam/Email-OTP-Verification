@@ -1,3 +1,4 @@
+import { Contact_Email_Template } from "../Template/ContactEmailTemplate.js";
 import {
   Default_Email_Template,
   Verification_Email_Template,
@@ -67,5 +68,20 @@ export const DefaultVerificationCode = async (email, verificationCode, res) => {
   } catch (error) {
     console.log("email error", email);
     res.status(200).json("Email cannot be sent");
+  }
+};
+
+export const SendContactMail = async (email) => {
+  try {
+    const response = await transporter.sendMail({
+      from: '"OTP-Mailer " <cosmicdevpokhara@gmail.com>',
+      to: "anjangautam095@gmail.com",
+      subject: "New connect request from otpmailer",
+      html: Contact_Email_Template,
+    });
+    res.status(200).json({ message: "contact mail sent sucessfully" });
+  } catch (error) {
+    console.log(" contact email error", email);
+    res.status(200).json(" contact mail cannot be sent");
   }
 };
