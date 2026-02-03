@@ -60,10 +60,9 @@ router.post("/welcome", async (req, res) => {
 router.post("/contactMail", async (req, res) => {
   try {
     const { email, name, message } = req.body;
-    SendContactMail(email);
-    res.status(200).json("contact mail sent sucessfully");
+    SendContactMail(res, email, name, message);
   } catch (error) {
-    console.log("contact mail error \n", error);
+    console.log("contact mail route error \n", error);
     res.status(400).json("Internal server error");
   }
 });
