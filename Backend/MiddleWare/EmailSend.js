@@ -52,7 +52,12 @@ export const SendVerificationCode = async (
   }
 };
 
-export const DefaultVerificationCode = async (email, verificationCode, res) => {
+export const DefaultVerificationCode = async (
+  email,
+  verificationCode,
+  res,
+  hashedOtp,
+) => {
   try {
     const response = await transporter.sendMail({
       from: '"OTP-Mailer " <cosmicdevpokhara@gmail.com>',
@@ -63,9 +68,7 @@ export const DefaultVerificationCode = async (email, verificationCode, res) => {
         verificationCode,
       ),
     });
-    res
-      .status(200)
-      .json({ message: "Otp sent sucessfully", otp: verificationCode });
+    res.status(200).json({ message: "Otp sent sucessfully", otp: hashedOtp });
   } catch (error) {
     console.log("email error", email);
     res.status(200).json("Email cannot be sent");

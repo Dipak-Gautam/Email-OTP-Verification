@@ -9,6 +9,7 @@ import {
 import { sendWelcomeMessage } from "../MiddleWare/welcomeEmailSend.js";
 import getRandomNumber from "../Functions/randomFunction.js";
 import jwt from "jsonwebtoken";
+import hashOtp from "../Functions/hashOtp.js";
 
 router.post("/otp", async (req, res) => {
   try {
@@ -31,7 +32,8 @@ router.post("/otp-verify", async (req, res) => {
   try {
     const { email, otpDigit } = req.body;
     const otp = getRandomNumber(otpDigit);
-    DefaultVerificationCode(email, otp, res);
+    const hashedOtp = await hashOtp(otp);
+    DefaultVerificationCode(email, otp, res, hashedOtp);
   } catch (error) {
     console.log("OTP verification error");
     res.status(400).json("Internal server error");

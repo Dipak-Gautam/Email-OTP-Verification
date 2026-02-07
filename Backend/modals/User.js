@@ -239,14 +239,14 @@ const userSchema = new mongoose.Schema(
         },
       },
     },
-    // logOtp: {
-    //   try: {
-    //     type: Number,
-    //   },
-    //   otp: {
-    //     type: String,
-    //   },
-    // },
+    logOtp: {
+      try: {
+        type: Number,
+      },
+      otp: {
+        type: String,
+      },
+    },
   },
   { timestamps: true },
 );
