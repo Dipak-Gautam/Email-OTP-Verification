@@ -2,6 +2,9 @@ import express from "express";
 const router = express.Router();
 import User from "../modals/User.js";
 import { jwtAuthMiddleWare, generateJWtToken } from "../jwt.js";
+import { DefaultVerificationCode } from "../MiddleWare/EmailSend.js";
+import hashOtp from "../Functions/hashOtp.js";
+import getRandomNumber from "../Functions/randomFunction.js";
 
 router.post("/signup", async (req, res) => {
   try {
@@ -97,6 +100,18 @@ router.delete("/delete", jwtAuthMiddleWare, async (req, res) => {
   } catch (error) {
     console.log("delete", error);
     res.status(500).json({ message: "Internal server error", error: error });
+  }
+});
+
+router.post("/otp-verify", async (req, res) => {
+  try {
+    const { email, otpDigit } = req.body;
+    const otp = getRandomNumber(otpDigit);
+    const hashedOtp = await hashOtp(otp);
+    DefaultVerificationCode(email, otp, res, hashedOtp);
+  } catch (error) {
+    console.log("OTP verification error", error);
+    res.status(400).json("Internal server error");
   }
 });
 

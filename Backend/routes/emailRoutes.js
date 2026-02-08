@@ -28,18 +28,6 @@ router.post("/otp", async (req, res) => {
   }
 });
 
-router.post("/otp-verify", async (req, res) => {
-  try {
-    const { email, otpDigit } = req.body;
-    const otp = getRandomNumber(otpDigit);
-    const hashedOtp = await hashOtp(otp);
-    DefaultVerificationCode(email, otp, res, hashedOtp);
-  } catch (error) {
-    console.log("OTP verification error");
-    res.status(400).json("Internal server error");
-  }
-});
-
 router.post("/welcome", async (req, res) => {
   try {
     const { secretCode, email, buttonLink, variables } = req.body;
